@@ -1,5 +1,7 @@
 package com.project.datajpa.models;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,4 +27,7 @@ public class Author {
     private String email;
 
     private int age;
+
+    @ManyToMany(mappedBy = "authors")
+    private List<Course> courses;
 }

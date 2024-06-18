@@ -1,8 +1,8 @@
 package com.project.datajpa.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import java.util.List;
+
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,5 +23,18 @@ public class Course {
 
     private String description;
 
+    @ManyToMany
+    @JoinTable(
+        name = "authors_courses",
+        joinColumns = {
+            @JoinColumn(name = "course_id")
+        },
+        inverseJoinColumns = {
+            @JoinColumn(name = "author_id")
+        }
+    )
+    private List<Author> authors;
 
+    @OneToMany(mappedBy = "course")
+    private List<Section> sections;
 }
