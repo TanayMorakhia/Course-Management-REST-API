@@ -30,4 +30,15 @@ public class Author {
 
     @ManyToMany(mappedBy = "authors")
     private List<Course> courses;
+
+    @Override
+    public String toString() {
+        return "Author{" +
+            "id=" + id +
+            ", firstName='" + firstName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            ", email='" + email + '\'' +
+            ", age=" + age +
+            '}';
+    }
 }
