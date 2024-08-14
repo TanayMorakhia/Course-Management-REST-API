@@ -10,6 +10,10 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @Entity
+@NamedQuery(
+    name = "Author.findAuthorByNamedQuery",
+    query = "select a from Author a where a.age >= :age"
+)
 public class Author {
 
     @Id

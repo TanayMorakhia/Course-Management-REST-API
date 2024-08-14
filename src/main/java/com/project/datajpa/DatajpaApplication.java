@@ -53,10 +53,11 @@ public class DatajpaApplication {
 
 //			System.out.println(repository.findById(1));
 
-			repository.updateWhereAgeWhereIdIs(21, 1);
-
-			log.info(repository.findById(1).toString());
-
+//			repository.updateWhereAgeWhereIdIs(21, 1);
+//
+//			log.info(repository.findById(1).toString());
+			repository.findAuthorByNamedQuery(40)
+				.forEach(System.out::println);
 		};
 	}
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.project.datajpa.models.Author;
 import jakarta.transaction.Transactional;
@@ -12,6 +13,7 @@ import jakarta.transaction.Transactional;
 public interface AuthorRepository extends JpaRepository<Author, Integer> {
 
     Author findById(int id);
+
     List<Author> findALlByFirstName(String fn);
 
     // returns both uppercase and lower case letters
@@ -34,5 +36,7 @@ public interface AuthorRepository extends JpaRepository<Author, Integer> {
     @Transactional
     @Query("update Author a set a.age = :age where a.id = :id")
     void updateWhereAgeWhereIdIs(int age, int id);
+
+    List<Author> findAuthorByNamedQuery(@Param("age") int age);
 
 }
